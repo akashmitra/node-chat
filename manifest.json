@@ -1,0 +1,7 @@
+{
+    "name": "Node Chat",
+    "short_name": "node-chat",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Chat Application using Node"
+}

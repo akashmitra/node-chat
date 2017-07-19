@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>VORTEX Chat</title>
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu">
+    <div class="back"><img src="images/user.png" draggable="false" /></div>
+    <div id="username" class="name" contenteditable="true"> Type your name here</div>
+  </div>
+
+  <ul id="messages" class="chat"></ul>
+
+
+  <form action="">
+    <input class="textarea" id="m" type="text" placeholder="Type here!" autocomplete="off" />
+  </form>
+
+  <script src="js/socket.io-1.2.0.js"></script>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/common.js"></script>
+
+</body>
+
+</html>
