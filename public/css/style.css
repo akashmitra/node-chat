@@ -281,7 +281,7 @@ a{
 input.textarea {
     position: fixed;
     bottom: 0px;
-    left: 0px;
+    left: 45px;
     right: 0px;
     width: 100%;
     height: 50px;
@@ -289,7 +289,7 @@ input.textarea {
     background: #fafafa;
     border: none;
     outline: none;
-    padding-left: 55px;
+    padding-left: 30px;
     padding-right: 55px;
     color: #666;
     font-weight: 400;
@@ -306,4 +306,28 @@ p.sender{
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+.notify{
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #5DADE2;
+    justify-content: center;
+    align-items: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    position: fixed;
+    bottom: 0px;
+    left: 5px;
+    height: 35px;
+    padding: 0px 10px;
+    cursor: pointer;
 }

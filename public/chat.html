@@ -2,26 +2,33 @@
 <html>
 
 <head>
-  <title>VORTEX Chat</title>
+  <title>Epiphany</title>
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/jquery.cssemoticons.css" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="menu">
-    <div class="back"><img src="images/user.png" draggable="false" /></div>
-    <div id="username" class="name" contenteditable="true"> Type your name here</div>
+    <div class="back"><img src="img/user.png" draggable="false" /></div>
+    <div id="username" class="name" contenteditable="true"></div>
   </div>
 
   <ul id="messages" class="chat"></ul>
 
-
   <form action="">
     <input class="textarea" id="m" type="text" placeholder="Type here!" autocomplete="off" />
+
+    <label class="custom-file-upload">
+      <input id="i" type="file"/>
+      <i class="fa fa-paperclip"></i>
+    </label>
+
   </form>
 
   <script src="js/socket.io-1.2.0.js"></script>
   <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/jquery.cssemoticons.min.js"></script>
   <script src="js/common.js"></script>
 
 </body>
