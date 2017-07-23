@@ -2,7 +2,7 @@
     'use strict';
 
     $(document).ready(function () {
-
+        
         var socket = io();
 
         var username = localStorage.getItem("username");
@@ -10,6 +10,10 @@
 
         $('#username').text(username);
 
+        if (prefLanguage !== "en"){
+            $('#m').mlKeyboard({layout: prefLanguage});
+        }
+        
         /* On new user entry */
         socket.emit('notification', username);
 
@@ -61,13 +65,13 @@
             var printmsg;
 
             /*Print without Translation*/
-            //printMsg();
+            printMsg();
 
             /* FetchTranslations */
-            fetchTranslation(prefLanguage, msg.body, function (translatedmessage) {
-                msg.body = translatedmessage;
-                printMsg();
-            });
+            // fetchTranslation(prefLanguage, msg.body, function (translatedmessage) {
+            //     msg.body = translatedmessage;
+            //     printMsg();
+            // });
 
             // Print Message
             function printMsg() {
