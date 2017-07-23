@@ -4,6 +4,7 @@
   "description": "chat application using node",
   "dependencies": {
     "@google-cloud/translate": "^1.0.0",
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "google-translate": "^2.0.5",
     "moment": "^2.18.1",

@@ -6,6 +6,8 @@
         var socket = io();
 
         var username = localStorage.getItem("username");
+        var prefLanguage = localStorage.getItem('language');
+
         $('#username').text(username);
 
         /* On new user entry */
@@ -15,7 +17,6 @@
         window.addEventListener("beforeunload", function (e) {
             socket.emit('exit', username);
         }, false);
-
 
         /* Image Upload */
         $('#i').change(function () {
@@ -59,27 +60,37 @@
             var target;
             var printmsg;
 
-            if (msg.sender === username) {
-                target = $('<li class="self">');
-            }
-            else {
-                target = $('<li class="other">');
+            /*Print without Translation*/
+            //printMsg();
+
+            /* FetchTranslations */
+            fetchTranslation(prefLanguage, msg.body, function (translatedmessage) {
+                msg.body = translatedmessage;
+                printMsg();
+            });
+
+            // Print Message
+            function printMsg() {
+                if (msg.sender === username) {
+                    target = $('<li class="self">');
+                }
+                else {
+                    target = $('<li class="other">');
+                }
+
+                if (msg.type === "text") {
+                    printmsg = `<div class="msg"><p class="sender">` + msg.sender + `</p><br><p class="msgbody">` + msg.body + `</p><time>` + msg.time + `</time></div></li>`;
+                }
+                else if (msg.type === "image") {
+                    console.log(msg.body);
+                    printmsg = `<div class="msg"><p class="sender">` + msg.sender + `</p><br><img src="` + msg.body + `" width="50%"><time>` + msg.time + `</time></div></li>`;
+                }
+
+                $('#messages').append(target.html(printmsg));
+                $('.msgbody').emoticonize();
+                window.scrollTo(0, document.body.scrollHeight);
             }
 
-            if (msg.type === "text") {
-                printmsg = `<div class="msg"><p class="sender">` + msg.sender + `</p><br><p class="msgbody">` + msg.body + `</p><time>` + msg.time + `</time></div></li>`;
-            }
-            else if (msg.type === "image") {
-                console.log(msg.body);
-                printmsg = `<div class="msg"><p class="sender">` + msg.sender + `</p><br><img src="` + msg.body + `" width="50%"><time>` + msg.time + `</time></div></li>`;
-            }
-
-
-            $('#messages').append(target.html(printmsg));
-            $('.msgbody').emoticonize();
-            // var temp = document.title ;
-            // document.title = 'A message has arrived';
-            window.scrollTo(0, document.body.scrollHeight);
         });
 
 
@@ -90,6 +101,30 @@
             window.scrollTo(0, document.body.scrollHeight);
         });
 
-    });
 
-}());
+
+        /* FetchTranslations */
+        function fetchTranslation(prefLanguage, message, callback) {
+            var translatedmessage;
+            var req = {
+                "q": message,
+                "target": prefLanguage
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/fetchTranlation",
+                data: req,
+                success: function (translatedMsg) {
+                    translatedmessage = translatedMsg.translation;
+                    console.log('translatedMsg :: ', translatedmessage);
+                    callback(translatedmessage);
+                }
+            });
+
+        }
+
+
+    }); // End of Jquery Document Ready
+
+}()); // End of IIFE

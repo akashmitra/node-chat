@@ -11,6 +11,7 @@
 
         if (typeof (Storage) !== "undefined") {
             localStorage.setItem("username", $('#username').val());
+            localStorage.setItem("language", $('#language').val());
         } else {
            console.warn('For the time being no web storage support');
         }
