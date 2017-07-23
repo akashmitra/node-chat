@@ -1,7 +1,6 @@
 (function () {
     'use strict';
     
-    var apikey = "AIzaSyA21IKrlPw-Wck8fxuj3GM1NQKH0EmGWXk";
     var googleTranslate = require('google-translate')(apikey);
 
     exports.fetchTranslations = function (msg, callback) {
