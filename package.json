@@ -8,7 +8,7 @@
     "express": "^4.15.2",
     "google-translate": "^2.0.5",
     "moment": "^2.18.1",
-    "socket.io": "^1.7.3"
+    "socket.io": "^2.1.0"
   },
   "scripts": {
     "start": "nodemon index.js",
