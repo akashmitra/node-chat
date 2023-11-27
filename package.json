@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "description": "chat application using node",
   "dependencies": {
-    "@google-cloud/translate": "^1.0.0",
+    "@google-cloud/translate": "^2.1.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "google-translate": "^2.0.5",
     "moment": "^2.18.1",
-    "socket.io": "^1.7.3"
+    "socket.io": "^2.0.0"
   },
   "scripts": {
     "start": "nodemon index.js",
